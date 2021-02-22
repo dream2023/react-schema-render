@@ -1,9 +1,9 @@
 <h1 align="center">react-schema-render</h1>
 
-![npm version](https://img.shields.io/npm/v/@dream2023/react-schema-render?style=for-the-badge)
-![npm bundle size](https://img.shields.io/bundlephobia/minzip/@dream2023/react-schema-render?style=for-the-badge)
-![npm downloads](https://img.shields.io/npm/dt/@dream2023/react-schema-render?style=for-the-badge)
-![NPM](https://img.shields.io/npm/l/@dream2023/react-schema-render?style=for-the-badge)
+![npm version](https://img.shields.io/npm/v/react-schema-render?style=for-the-badge)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/react-schema-render?style=for-the-badge)
+![npm downloads](https://img.shields.io/npm/dt/react-schema-render?style=for-the-badge)
+![NPM](https://img.shields.io/npm/l/react-schema-render?style=for-the-badge)
 
 ## Introduction
 

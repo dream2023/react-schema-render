@@ -1,6 +1,6 @@
 {
   "name": "react-schema-render",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "react-schema-render 是一个通用型 schema 转 React 组件的工具组件。",
   "license": "MIT",
   "main": "dist/index.js",
@@ -21,7 +21,8 @@
     "release": "npm run build && npm publish",
     "prettier": "prettier --write \"src/**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
-    "test:coverage": "umi-test --coverage"
+    "test:coverage": "umi-test --coverage",
+    "codecov": "codecov"
   },
   "keywords": [
     "react-schema-render",
@@ -62,9 +63,10 @@
     "@testing-library/react": "^11.2.5",
     "@umijs/test": "^3.0.5",
     "antd": "^4.12.3",
+    "codecov": "^3.8.1",
     "dumi": "^1.0.13",
     "father-build": "^1.17.2",
-    "gh-pages": "^3.0.0",
+    "gh-pages": "^3.1.0",
     "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",
     "yorkie": "^2.0.0"
