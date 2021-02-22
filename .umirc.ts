@@ -3,8 +3,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 export default defineConfig({
   title: 'schema-render',
-  base: './',
-  publicPath: './',
+  base: '/react-schema-render',
+  publicPath: '/react-schema-render/',
   outputPath: 'docs-dist',
   extraBabelPlugins: [
     [

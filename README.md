@@ -2,6 +2,7 @@
 
 ![npm version](https://img.shields.io/npm/v/react-schema-render?style=for-the-badge)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/react-schema-render?style=for-the-badge)
+![Codecov](https://img.shields.io/codecov/c/github/dream2023/react-schema-render?style=for-the-badge)
 ![npm downloads](https://img.shields.io/npm/dt/react-schema-render?style=for-the-badge)
 ![NPM](https://img.shields.io/npm/l/react-schema-render?style=for-the-badge)
 
