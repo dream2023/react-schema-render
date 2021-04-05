@@ -1,12 +1,15 @@
 import { ReactElement } from 'react';
+import { SchemaRenderContextProps } from '../SchemaRenderContext';
 
 // 组件装饰器类型
 export type ComponentDecoratorType = ({
   children,
   schema,
+  context,
 }: {
   children: ReactElement<any, any>;
   schema: Record<any, any>;
+  context: SchemaRenderContextProps;
 }) => ReactElement<any, any>;
 
 // 组件装饰器

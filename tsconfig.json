@@ -11,6 +11,7 @@
     "strict": true,
     "paths": {
       "@/*": ["src/*"],
+      "react-schema-render": ["src/index.tsx"],
       "@@/*": ["src/.umi/*"]
     },
     "allowSyntheticDefaultImports": true

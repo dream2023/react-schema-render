@@ -10,7 +10,7 @@ export function objectSchemaToComponent(
 ) {
   // 先通过自定义 parsers 做处理
   const res = (context.parsers || getParsers()).reduce(
-    (acc, parser) => parser(acc),
+    (acc, parser) => parser(acc, context),
     schema,
   );
 
@@ -22,6 +22,7 @@ export function objectSchemaToComponent(
     return componentDecoratorFn({
       schema,
       children: baseSchemaParser(res, context),
+      context,
     });
   }
 

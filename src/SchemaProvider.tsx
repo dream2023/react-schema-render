@@ -9,10 +9,11 @@ export const SchemaProvider: FC<SchemaRenderContextProps> = ({
   components,
   parsers,
   componentDecorator,
+  ...resetProps
 }) => {
   return (
     <SchemaRenderContext.Provider
-      value={{ components, componentDecorator, parsers }}
+      value={{ components, componentDecorator, parsers, ...resetProps }}
     >
       {children}
     </SchemaRenderContext.Provider>

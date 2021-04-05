@@ -1,5 +1,10 @@
+import { SchemaRenderContextProps } from '../SchemaRenderContext';
+
 // schema 解析器类型
-export type SchemaParserType = (schema: Record<any, any>) => any;
+export type SchemaParserType = (
+  schema: Record<any, any>,
+  context: SchemaRenderContextProps,
+) => any;
 
 // schema 解析器
 let _schemaParsers: SchemaParserType[] = [];
