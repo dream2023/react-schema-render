@@ -47,14 +47,7 @@ const components = {
 };
 ```
 
-**第 3 步：传递映射关系**
-
-```js
-import { setComponents } from 'react-schema-render';
-setComponents(components);
-```
-
-**第 4 步：定义 schema**
+**第 3 步：定义 schema**
 
 ```jsx | pure
 const schema = {
@@ -106,12 +99,14 @@ const schema = {
 };
 ```
 
-**第 5 步：使用**
+**第 4 步：使用**
 
 ```jsx | pure
-import { SchemaRender } from 'react-schema-render';
+import { SchemaRender, SchemaProvider } from 'react-schema-render';
 
-<SchemaRender schema={schema}></SchemaRender>;
+<SchemaProvider components={components}>
+  <SchemaRender schema={schema}></SchemaRender>;
+</SchemaProvider>;
 ```
 
 完成 Demo：
@@ -119,15 +114,13 @@ import { SchemaRender } from 'react-schema-render';
 ```jsx
 import React from 'react';
 import { Collapse } from 'antd';
-import { setComponents, SchemaRender } from 'react-schema-render';
+import { SchemaProvider, SchemaRender } from 'react-schema-render';
 
 const { Panel } = Collapse;
 const components = {
   collapse: Collapse,
   panel: Panel,
 };
-
-setComponents(components);
 
 const App = () => {
   const schema = {
@@ -175,7 +168,11 @@ const App = () => {
     ],
   };
 
-  return <SchemaRender schema={schema}></SchemaRender>;
+  return (
+    <SchemaProvider components={components}>
+      <SchemaRender schema={schema}></SchemaRender>
+    </SchemaProvider>
+  );
 };
 
 export default App;

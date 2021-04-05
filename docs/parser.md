@@ -36,6 +36,12 @@ function classParser(schema) {
 
 ### 3、配置
 
+```jsx | pure
+<SchemaProvider parsers={[classParser]}></SchemaProvider>
+```
+
+和 `components` 一样，解析器也支持函数配置。
+
 ```js | pure
 setParser(classParser);
 ```
@@ -45,8 +51,8 @@ setParser(classParser);
 ```jsx
 // 组件测试
 import React from 'react';
-import './classParser.js';
-import { SchemaRender } from 'react-schema-render';
+import { classParser } from './classParser.js';
+import { SchemaRender, SchemaProvider } from 'react-schema-render';
 
 const App = () => {
   const schema = {
@@ -54,7 +60,12 @@ const App = () => {
     class: 'ant-alert ant-alert-success ant-alert-no-icon',
     children: 'div content',
   };
-  return <SchemaRender schema={schema}></SchemaRender>;
+
+  return (
+    <SchemaProvider parsers={[classParser]}>
+      <SchemaRender schema={schema}></SchemaRender>
+    </SchemaProvider>
+  );
 };
 
 export default App;

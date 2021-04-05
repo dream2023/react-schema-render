@@ -1,6 +1,6 @@
 import { createElement, ReactElement } from 'react';
 
-import { getComponent } from './config';
+import { getComponent, getComponents } from './config';
 import { hasNotSchema, isJsonSchema } from './util';
 import { objectSchemaToComponent } from './schemaToComponent';
 import { SchemaRenderContextProps } from './SchemaRenderContext';
@@ -9,8 +9,11 @@ import { SchemaRenderContextProps } from './SchemaRenderContext';
  * 从数组中获取属性值
  * @param arr
  */
-export function getPropValueFromArray(arr: any[]): any[] {
-  return arr.map(item => getPropValue(item));
+export function getPropValueFromArray(
+  arr: any[],
+  context: SchemaRenderContextProps = {},
+): any[] {
+  return arr.map(item => getPropValue(item, context));
 }
 
 /**
@@ -25,7 +28,7 @@ export function getPropValueFromArray(arr: any[]): any[] {
 export function getPropValue(val: any, context: SchemaRenderContextProps = {}) {
   if (Array.isArray(val)) {
     // 数组，则继续深度递归
-    return getPropValueFromArray(val);
+    return getPropValueFromArray(val, context);
   } else if (isJsonSchema(val)) {
     // schema，则转为组件
     return objectSchemaToComponent(val, context);
@@ -72,8 +75,9 @@ export function baseSchemaParser(
   }
 
   // 如果 component 是字符串，则从配置中获取 components
-  if (typeof component === 'string' && getComponent(component, context)) {
-    return createElement(getComponent(component, context), componentProps);
+  const componentsMap = context.components || getComponents();
+  if (typeof component === 'string' && componentsMap[component]) {
+    return createElement(componentsMap[component], componentProps);
   }
 
   // 否则直接创建

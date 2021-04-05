@@ -1,5 +1,4 @@
 import { Card } from 'antd';
-import { setComponentDecorator } from 'react-schema-render';
 
 // children 为转换后的组件，schema 是原 json 对象
 export const componentDecorator = ({ children, schema }) => {
@@ -11,4 +10,4 @@ export const componentDecorator = ({ children, schema }) => {
   );
 };
 
-setComponentDecorator(componentDecorator);
+export default componentDecorator;

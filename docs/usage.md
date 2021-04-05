@@ -8,7 +8,19 @@ order: 2
 
 ## 配置说明
 
-- `setComponent` 设置单个组件映射：
+### 通过 SchemaProvider 配置
+
+```jsx | pure
+import { SchemaProvider } from 'react-schema-render';
+// components 为 组件映射关系
+<SchemaProvider components={components}></SchemaProvider>;
+```
+
+### 通过函数配置
+
+如果组件是全局统一，我们可以通过配置函数来建立映射关系。
+
+#### `setComponent` 设置单个组件映射
 
 ```js | pure
 import { Form } from 'antd';
@@ -16,7 +28,7 @@ import { setComponent } from 'react-schema-render';
 setComponent('form', Form);
 ```
 
-- `setComponents` 设置多个组件映射：
+#### `setComponents` 设置多个组件映射
 
 > 多次调用之间是 merge 的关系。
 
@@ -26,7 +38,7 @@ import { setComponents } from 'react-schema-render';
 setComponents({ form: Form, btn: Button });
 ```
 
-- `clearComponent` 清除映射：
+#### `clearComponent` 清除映射
 
 `setComponent` 和 `setComponents` 是多次调用是 merge 的关系，想要清除，就需要调用 `clearComponent`：
 
@@ -38,27 +50,29 @@ clearComponent();
 
 ## 渲染说明
 
+> 为了示例保持示例的隔离，以下使用 `SchemaProvider` 来做组件映射配置。
+
 ### 渲染对象
 
 ```jsx
 import React from 'react';
 import { Input } from 'antd';
 import { SettingOutlined } from '@ant-design/icons';
-import { SchemaRender, setComponents } from 'react-schema-render';
-
-setComponents({ input: Input });
+import { SchemaRender, SchemaProvider } from 'react-schema-render';
 
 const App = () => {
   return (
-    <SchemaRender
-      schema={{
-        component: 'input',
-        addonAfter: {
-          component: SettingOutlined,
-        },
-        defaultValue: 'mysite',
-      }}
-    />
+    <SchemaProvider components={{ input: Input }}>
+      <SchemaRender
+        schema={{
+          component: 'input',
+          addonAfter: {
+            component: SettingOutlined,
+          },
+          defaultValue: 'mysite',
+        }}
+      />
+    </SchemaProvider>
   );
 };
 export default App;

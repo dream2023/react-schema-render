@@ -38,6 +38,13 @@ export const componentDecorator = ({ children, schema }) => {
 
 ## 3、传递配置
 
+```jsx | pure
+import { SchemaProvider } from 'react-schema-render';
+<SchemaProvider componentDecorator={componentDecorator}></SchemaProvider>;
+```
+
+或者使用函数的形式：
+
 ```js | pure
 import { setComponentDecorator } from 'react-schema-render';
 
@@ -51,15 +58,13 @@ setComponentDecorator(componentDecorator);
 ```jsx
 import React from 'react';
 import { Descriptions } from 'antd';
-import { setComponents, SchemaRender } from 'react-schema-render';
-import './componentDecorator.js';
+import { SchemaProvider, SchemaRender } from 'react-schema-render';
+import { componentDecorator } from './componentDecorator.js';
 
 // 组件映射
 const components = {
   'my-descriptions': Descriptions,
 };
-
-setComponents(components);
 
 // 组件测试
 const App = () => {
@@ -79,7 +84,14 @@ const App = () => {
     ),
   };
 
-  return <SchemaRender schema={schema}></SchemaRender>;
+  return (
+    <SchemaProvider
+      components={components}
+      componentDecorator={componentDecorator}
+    >
+      <SchemaRender schema={schema}></SchemaRender>
+    </SchemaProvider>
+  );
 };
 
 export default App;

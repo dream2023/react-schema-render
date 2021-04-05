@@ -57,8 +57,8 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
+    "@umijs/plugin-antd": "^0.9.1",
     "@umijs/test": "^3.0.5",
-    "antd": "^4.12.3",
     "dumi": "^1.0.13",
     "father-build": "^1.17.2",
     "lint-staged": "^10.0.7",

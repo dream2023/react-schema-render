@@ -7,12 +7,12 @@ import {
 export const SchemaProvider: FC<SchemaRenderContextProps> = ({
   children,
   components,
-  schemaParsers,
+  parsers,
   componentDecorator,
 }) => {
   return (
     <SchemaRenderContext.Provider
-      value={{ components, componentDecorator, schemaParsers }}
+      value={{ components, componentDecorator, parsers }}
     >
       {children}
     </SchemaRenderContext.Provider>

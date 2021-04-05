@@ -8,7 +8,7 @@ import {
 export interface SchemaRenderContextProps {
   components?: ComponentsType;
   componentDecorator?: ComponentDecoratorType;
-  schemaParsers?: SchemaParserType[];
+  parsers?: SchemaParserType[];
 }
 
 export const SchemaRenderContext = createContext<SchemaRenderContextProps>({});

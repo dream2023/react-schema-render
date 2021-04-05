@@ -9,7 +9,7 @@ export function objectSchemaToComponent(
   context: SchemaRenderContextProps = {},
 ) {
   // 先通过自定义 parsers 做处理
-  const res = (context.schemaParsers || getParsers()).reduce(
+  const res = (context.parsers || getParsers()).reduce(
     (acc, parser) => parser(acc),
     schema,
   );
