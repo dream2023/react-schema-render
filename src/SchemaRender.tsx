@@ -1,5 +1,9 @@
-import React, { FC, memo } from 'react';
-import { objectSchemaToComponent, arraySchemaToComponent } from './helpers';
+import React, { FC, memo, useContext } from 'react';
+import {
+  SchemaRenderContext,
+  arraySchemaToComponent,
+  objectSchemaToComponent,
+} from './helpers';
 
 export interface SchemaRenderProps {
   /**
@@ -10,9 +14,11 @@ export interface SchemaRenderProps {
 }
 
 export const SchemaRender: FC<SchemaRenderProps> = memo(({ schema }) => {
-  if (Array.isArray(schema)) return arraySchemaToComponent(schema);
-  if (typeof schema === 'object') return objectSchemaToComponent(schema);
-  return <></>;
+  const context = useContext(SchemaRenderContext);
+  if (Array.isArray(schema)) return arraySchemaToComponent(schema, context);
+  if (typeof schema === 'object')
+    return objectSchemaToComponent(schema, context);
+  return null;
 });
 
 export default SchemaRender;

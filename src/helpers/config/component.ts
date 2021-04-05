@@ -1,4 +1,5 @@
 import { ComponentType } from 'react';
+import { SchemaRenderContextProps } from '../SchemaRenderContext';
 
 // 组件列表类型
 export type ComponentsType = Record<string, ComponentType<any>>;
@@ -30,8 +31,11 @@ export function getComponents() {
 /**
  * 获取单个 component
  */
-export function getComponent(name: string) {
-  return _components[name];
+export function getComponent(
+  name: string,
+  context: SchemaRenderContextProps = {},
+) {
+  return (context.components || _components)[name];
 }
 
 /**
