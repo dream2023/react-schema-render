@@ -1,6 +1,6 @@
 {
   "name": "react-schema-render",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "react-schema-render 是一个通用型 schema 转 React 组件的工具组件。",
   "license": "MIT",
   "main": "dist/index.js",

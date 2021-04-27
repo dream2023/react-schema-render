@@ -8,25 +8,24 @@ order: 3
 
 有了它，我们想怎么扩展解析器都是可以的，为了更好的说明，我们通过 1 个简单的示例和 1 个复杂的示例说明。
 
-## `class` 转 `className`
+## `className` 支持对象
 
 ### 1、需求说明
 
-因为 `class` 是 JS 中的关键字，所以 React 使用了 `className` 代替了 `class`，如果我们想在 schema 开发过程中恢复 `class` 的用法，可以通过自定义解析器实现：
+我们知道 react 的 `className` 属性只支持字符串形式，我们可以通过自定义 schema 解析器和 [classnames](https://www.npmjs.com/package/classnames) 来让其支持 **数组** 的形式，那么我们可以这样做：
 
 ### 2、parser 实现
 
 最开始说明中也提到了 `parser` 实际就是一个函数，其被注入了 `schema` 作为参数，所以我们可以这样做：
 
 ```js | pure
+import classnames from 'classnames';
 // 函数，接受一个 schema 对象作为参数
-function classParser(schema) {
+function classNameParser(schema) {
   // 判断是否有 class 属性
-  if (schema.class) {
-    // 如果有，则将其赋值给 className
-    schema.className = schema.class;
-    // 并删除 class 属性
-    delete schema.class;
+  if (schema.className) {
+    // 使用 classnames 库转换 className
+    schema.className = classnames(schema.className);
   }
 
   // 最后一定要返回修改后的 schema 对象
@@ -37,13 +36,13 @@ function classParser(schema) {
 ### 3、配置
 
 ```jsx | pure
-<SchemaProvider parsers={[classParser]}></SchemaProvider>
+<SchemaProvider parsers={[classNameParser]}></SchemaProvider>
 ```
 
 和 `components` 一样，解析器也支持函数配置。
 
 ```js | pure
-setParser(classParser);
+setParser(classNameParser);
 ```
 
 ### 4、使用
@@ -51,18 +50,24 @@ setParser(classParser);
 ```jsx
 // 组件测试
 import React from 'react';
-import { classParser } from './classParser.js';
+import { classNameParser } from './classNameParser.js';
 import { SchemaRender, SchemaProvider } from 'react-schema-render';
 
 const App = () => {
   const schema = {
     component: 'div',
-    class: 'ant-alert ant-alert-success ant-alert-no-icon',
-    children: 'div content',
+    className: ['ant-card', 'ant-card-bordered', 'ant-card-hoverable'],
+    style: {
+      height: '300px',
+      lineHeight: '300px',
+      textAlign: 'center',
+      fontSize: '50px',
+    },
+    children: '本来无一物，何处惹尘埃。',
   };
 
   return (
-    <SchemaProvider parsers={[classParser]}>
+    <SchemaProvider parsers={[classNameParser]}>
       <SchemaRender schema={schema}></SchemaRender>
     </SchemaProvider>
   );

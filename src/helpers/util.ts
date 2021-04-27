@@ -10,10 +10,10 @@
  * isJsonSchema({ component: 'input', _notSchema: true }) // => false
  */
 export function isJsonSchema(val: any) {
-  return typeof val === 'object' && val.component && !hasNotSchema(val);
+  return val && typeof val === 'object' && val.component && !hasNotSchema(val);
 }
 
 // 是否有 notSchema
 export function hasNotSchema(o: any): boolean {
-  return typeof o === 'object' && '_notSchema' in o;
+  return o && typeof o === 'object' && '_notSchema' in o;
 }
